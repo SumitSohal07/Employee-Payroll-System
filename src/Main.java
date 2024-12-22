@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 abstract class Employee{
     private String name;
 
@@ -56,6 +58,19 @@ class FullTimeEmployee extends Employee{
 
         public PayrollSystem(){
             employeeList = new ArrayList<>();
+        }
+        public void addEmployee(Employee employee){
+            employeeList.add(employee);
+        }
+
+        public void removeEmployee(int id){
+            Employee employeeToRemove = null;
+            for(Employee employee: employeeList){
+                if(employee.getId() == id){
+                    employeeList.remove(employee);
+                    break;
+                }
+            }
         }
     }
 public class Main{
