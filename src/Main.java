@@ -38,10 +38,12 @@ class FullTimeEmployee extends Employee{
         return monthlySalary;
     }
 
+    }
+    
     class PartTimeEmployee extends Employee{
         private int hoursWorked;
         private double hourlyRate;
-
+    
         public PartTimeEmployee(String name, int id, int hoursWorked, double hourlyRate){
             super(name, id);
             this.hoursWorked = hoursWorked;
@@ -71,11 +73,28 @@ class FullTimeEmployee extends Employee{
                     break;
                 }
             }
+
+        }
+
+        public void displayEmployees(){
+            for(Employee employee: employeeList){
+                System.out.println(employee);
+            }
         }
     }
 public class Main{
-    public static void main(String[] args){
-        System.out.println("Hello world");
+    public static void main(String[] args) {
+        FullTimeEmployee emp1 = new FullTimeEmployee("vikas", 1, 7000);
+        PartTimeEmployee emp2 = new PartTimeEmployee("Rahul", 2, 100, 50);
+        PayrollSystem payrollSystem = new PayrollSystem();
+
+        payrollSystem.addEmployee(emp1);
+        payrollSystem.addEmployee(emp2);
+        System.out.println("Initial Employee Details:");
+        payrollSystem.displayEmployees();
+        System.out.println("Removinf employees");
+        payrollSystem.removeEmployee(1);
+        System.out.println("Remaining Employee Details:");
+        payrollSystem.displayEmployees();
     }
-}
 }
